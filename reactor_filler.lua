@@ -28,7 +28,7 @@ local pattern = {
     "321321321"
 }
 
-local function findComponent(componentId)
+local function getComponentFingerprint(componentId)
     local items = me.getAvailableItems()
     local component = components[componentId]
     
@@ -46,7 +46,7 @@ local i = 1
 for _, line in pairs(pattern) do
     for x = 1, #line do
         local componentId = line:sub(x, x)
-        local fingerprint = findComponent(componentId)
+        local fingerprint = getComponentFingerprint(componentId)
         
         if fingerprint then
             if not me.exportItem(fingerprint, reactorSide, 1, i) then
